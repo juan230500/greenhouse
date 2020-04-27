@@ -1,0 +1,20 @@
+.container {
+    border: 1px solid #393e46;
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+.data {
+    margin: 0;
+    border: 0px solid #ccc;
+    display: inline-block;
+    width: 33%;
+}
+
+@media(min-width: 500px){
+    .container {
+        width: 450px;
+    }
+}
