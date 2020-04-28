@@ -1,7 +1,7 @@
 .container {
     padding:10px 10px;
     background-color:#00adb5;
-    box-shadow: 4px 2px 2px black;
+    box-shadow: 4px 2px 2px #ccc;
 }
 
 .title {

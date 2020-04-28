@@ -24,6 +24,21 @@ class App extends Component {
     ]
   }
 
+  updateDateHandler = () => {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(response => response.json())
+    .then(data => {
+      var newData = [...this.state.data];
+      newData.push({
+        date:'30/3/2020',
+        temp:'20.0',
+        humidity:'67.6',
+      });
+      this.setState({data:newData})
+    });
+
+  }
+
   render () {
     let data = this.state.data.map((item,index)=>(
       <Card
@@ -36,8 +51,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header title="Datos del invernadero"></Header>
-        <button>Actualizar</button>
         {data}
+        <button onClick={this.updateDateHandler}>Actualizar</button>
       </div>
     );
   }
