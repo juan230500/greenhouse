@@ -25,16 +25,11 @@ const getDate = (req,res,next) => {
 router.use(getDate);
 
 /* GET users listing. */
-router.get('/', (req, res, next) => {
-  if (req.headers.authorization != constants.APIkey)
-    res.json({result:'access denied'});
-  else{
-    mydb.collection("data").find({}).toArray((err,result)=>{
-      //console.log(result);
-      res.json({result:result})
-    });
-  }
-  
+router.get('/', (req, res) => {
+  mydb.collection("data").find({}).toArray((err,result)=>{
+    //console.log(result);
+    res.json({result:result})
+  });
 });
 
 router.post('/',(req,res)=>{
