@@ -28,26 +28,31 @@ router.use(getDate);
 router.get('/', (req, res, next) => {
   if (req.headers.authorization != constants.APIkey)
     res.json({result:'access denied'});
-
-  mydb.collection("data").find({}).toArray((err,result)=>{
-    console.log(result);
-    res.json({result:result})
-  });
+  else{
+    mydb.collection("data").find({}).toArray((err,result)=>{
+      //console.log(result);
+      res.json({result:result})
+    });
+  }
+  
 });
 
 router.post('/',(req,res)=>{
-  if (req.headers.authorization != constants.APIkey)
+  if (req.headers.authorization != constants.APIkey){
     res.json({result:'access denied'});
-
-  let newData = req.body;
-  newData.date = req.requestTime;
-  mydb.collection("data").insertOne(newData, (err) => {
-    if (err) {
-      res.json({error:err});
-      throw err;
-    };
-    res.json({result:newData})
-  });
+  }
+  else{
+    let newData = req.body;
+    newData.date = req.requestTime;
+    mydb.collection("data").insertOne(newData, (err) => {
+      if (err) {
+        res.json({error:err});
+        throw err;
+      };
+      res.json({result:newData})
+    });
+  }
 })
 
 module.exports = router;
+

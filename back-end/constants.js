@@ -1,5 +1,5 @@
 const constants = {
-    APIkey:'xFn5?n9f4A^hC2+#'
+    APIkey:'tNt6aFDuRumZxdRLdS88ndZn'
 };
 
 module.exports = constants;
