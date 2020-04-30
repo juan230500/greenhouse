@@ -41,9 +41,9 @@ void loop() {
  
    HTTPClient http;    //Declare object of class HTTPClient
  
-   http.begin("http://192.168.100.12:3000/users/");      //Specify request destination
+   http.begin("http://ec2-54-166-144-31.compute-1.amazonaws.com:3000/greenhouse");      //Specify request destination
    http.addHeader("Content-Type", "application/json");  //Specify content-type header
-   http.addHeader("Authorization", "xFn5?n9f4A^hC2+#");
+   http.addHeader("Authorization", "");
  
    int httpCode = http.POST(jsonData);   //Send the request
    String payload = http.getString();                //Get the response payload

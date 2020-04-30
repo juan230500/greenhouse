@@ -17,7 +17,7 @@ class App extends Component {
     .then(response => response.json())
     .then(responseJson => {
       var newData = responseJson.result;
-      console.log(newData);
+      //console.log(newData);
       this.setState({data:newData})
     });
 

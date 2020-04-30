@@ -1,5 +1,6 @@
 var express = require('express');
 var cors = require('cors');
+var time = require('time');
 var router = express.Router();
 var constants = require('../constants');
 
@@ -18,16 +19,6 @@ client.connect(function(err, db) {
 
 router.use(cors());
 
-const getDate = (req,res,next) => {
-  var date = new Date;
-  req.requestTime =
-  `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`+
-  ` ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
-  next();
-}
-
-router.use(getDate);
-
 /* GET users listing. */
 router.get('/', (req, res) => {
   mydb.collection("data").find({}).toArray((err,result)=>{
@@ -35,6 +26,16 @@ router.get('/', (req, res) => {
     res.json({result:result})
   });
 });
+
+router.post('/',(req,res,next) => {
+  var date = new time.Date;
+  date.setTimezone("America/Costa_Rica");
+  req.requestTime =
+  `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`+
+  ` ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  next();
+})
+
 
 router.post('/',(req,res)=>{
   if (req.headers.authorization != constants.APIkey){
