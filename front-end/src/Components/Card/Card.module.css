@@ -1,20 +1,23 @@
 .container {
     border: 1px solid #393e46;
     display: block;
-    width: 80%;
+    width: 450px;
     margin: 20px auto;
     border-radius: 10px;
 }
 
 .data {
     margin: 0;
-    border: 0px solid #ccc;
+    border: 1px solid #ccc;
     display: inline-block;
-    width: 33%;
+    width: 32%;
 }
 
-@media(min-width: 500px){
+@media(max-width: 500px){
     .container {
-        width: 450px;
+        width: 80%;
+    }
+    .data {
+        width: 100px;
     }
 }
