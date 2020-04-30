@@ -25,9 +25,10 @@ class App extends Component {
   }
 
   updateDateHandler = () => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch('http://192.168.100.12:3000/greenhouse')
     .then(response => response.json())
     .then(data => {
+      console.log(data);
       var newData = [...this.state.data];
       newData.push({
         date:'30/3/2020',

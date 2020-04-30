@@ -1,4 +1,5 @@
 var express = require('express');
+var cors = require('cors');
 var router = express.Router();
 var constants = require('../constants');
 
@@ -13,6 +14,9 @@ client.connect(function(err, db) {
   }
   mydb = db.db("mydb");
 });
+
+
+router.use(cors());
 
 const getDate = (req,res,next) => {
   var date = new Date;
