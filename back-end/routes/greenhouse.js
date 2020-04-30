@@ -1,6 +1,5 @@
 var express = require('express');
 var cors = require('cors');
-var time = require('time');
 var router = express.Router();
 var constants = require('../constants');
 
@@ -16,7 +15,6 @@ client.connect(function(err, db) {
   mydb = db.db("mydb");
 });
 
-
 router.use(cors());
 
 /* GET users listing. */
@@ -28,11 +26,9 @@ router.get('/', (req, res) => {
 });
 
 router.post('/',(req,res,next) => {
-  var date = new time.Date;
-  date.setTimezone("America/Costa_Rica");
-  req.requestTime =
-  `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`+
-  ` ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  process.env.TZ = 'America/Costa_Rica';
+  var date = new Date();
+  req.requestTime = date.toLocaleDateString()+' '+date.toLocaleTimeString();
   next();
 })
 
